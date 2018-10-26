@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">CRUD</a>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-4">
+            <ul class="list.class=">
+                <li *ngFor="let empleado of EmpleadoArray" class="list-group-item list-group-item-action"
+                    (click)="openForEdit(empleado)" [class.active]="empleado == selectedEmpleado">
+                    <span class="badge badge-primary">{{empleado.id}}</span> {{
+                    empleado.name}} - {{empleado.country}}
+                </li>
+            </ul>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="card-title">
+                        Insertar nuevo
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedEmpleado.name" placeholder="Insert A Name"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedEmpleado.country"
+                            placeholder="Insert A country" class="form-control">
+                    </div>
+                    <button (click)="addOrEdit()" class="btn btn-primary">
+                        Enviar
+                    </button>
+                    <button class="btn btn-danger" (click)='delete()'>
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
